@@ -3,19 +3,20 @@
 import { useState } from "react";
 import {
 	WireframeCollapsableSidebar,
-	type WireframeCollapsableSidebarSide,
+	type WireframeCollapsableSidebarPosition,
 } from "@/components/ui/wireframe";
 
 export function Sidebar() {
 	const [collapsed, setCollapsed] = useState(false);
-	const [side, setSide] = useState<WireframeCollapsableSidebarSide>("left");
+	const [position, setPosition] =
+		useState<WireframeCollapsableSidebarPosition>("left");
 
 	function handleClick() {
 		setCollapsed(!collapsed);
 	}
 
 	return (
-		<WireframeCollapsableSidebar collapsed={collapsed} side={side}>
+		<WireframeCollapsableSidebar collapsed={collapsed} position={position}>
 			<div className="flex min-h-full w-full items-center justify-between bg-pink-500/40">
 				<div className="flex flex-col gap-4">
 					<button onClick={handleClick} type="button">
@@ -23,9 +24,9 @@ export function Sidebar() {
 					</button>
 					<select
 						onChange={(e) =>
-							setSide(e.target.value as WireframeCollapsableSidebarSide)
+							setPosition(e.target.value as WireframeCollapsableSidebarPosition)
 						}
-						value={side}
+						value={position}
 					>
 						<option value="left">Left</option>
 						<option value="right">Right</option>

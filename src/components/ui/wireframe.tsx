@@ -7,8 +7,10 @@ function Wireframe({ className, ...props }: React.ComponentProps<"div">) {
 				// ADD MARGINS AROUND TO ENSURE THE CONTENT
 				// OCCUPIES THE VISIBLE AREA. THE NAV, FOOTER AND SIDEBAR
 				// WILL BE POSITIONED OUTSIDE OF THIS AREA AS FIXED ELEMENTS
-				"has-data-wf-nav:mt-16",
-				"has-data-wf-footer:mb-16",
+				// ADD TOP AND BOTTOM MARGINS IF NAV EXIST
+				"has-data-wf-top-nav:mt-16",
+				"has-data-wf-bottom-nav:mb-16",
+				// ADD SIDEBAR MARGIN IF SIDEBAR EXISTS
 				"has-data-[wf-left-sidebar=expanded]:ml-52",
 				"has-data-[wf-right-sidebar=expanded]:mr-52",
 				"has-data-[wf-left-sidebar=collapsed]:ml-16",
@@ -26,19 +28,21 @@ function Wireframe({ className, ...props }: React.ComponentProps<"div">) {
 
 				// PASS DOWN THE DIMENSIONS FOR THE NAV, FOOTER AND SIDEBAR
 				// TOP NAVIGATION HEIGHT
-				"**:data-wf-nav:h-16",
+				"**:data-wf-top-nav:h-16",
+				"**:data-wf-top-nav:top-0",
 				// ADD SIDEBAR MARGIN TO TOP NAV IF SIDEBAR EXISTS
-				"has-data-wf-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-nav:ml-52",
-				"has-data-wf-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-nav:mr-52",
-				"has-data-wf-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-nav:ml-16",
-				"has-data-wf-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-nav:mr-16",
+				"has-data-wf-top-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-top-nav:ml-52",
+				"has-data-wf-top-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-top-nav:mr-52",
+				"has-data-wf-top-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-top-nav:ml-16",
+				"has-data-wf-top-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-top-nav:mr-16",
 				// BOTTOM FOOTER HEIGHT
-				"**:data-wf-footer:h-16",
+				"**:data-wf-bottom-nav:h-16",
+				"**:data-wf-bottom-nav:bottom-0",
 				// ADD SIDEBAR MARGIN TO FOOTER IF SIDEBAR EXISTS
-				"has-data-wf-footer:has-data-[wf-left-sidebar=expanded]:**:data-wf-footer:ml-52",
-				"has-data-wf-footer:has-data-[wf-right-sidebar=expanded]:**:data-wf-footer:mr-52",
-				"has-data-wf-footer:has-data-[wf-left-sidebar=collapsed]:**:data-wf-footer:ml-16",
-				"has-data-wf-footer:has-data-[wf-right-sidebar=collapsed]:**:data-wf-footer:mr-16",
+				"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-bottom-nav:ml-52",
+				"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-bottom-nav:mr-52",
+				"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-bottom-nav:ml-16",
+				"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-bottom-nav:mr-16",
 				// SIDEBAR WIDTH AND POSITIONING
 				"**:data-wf-left-sidebar:left-0",
 				"**:data-wf-right-sidebar:right-0",
@@ -53,32 +57,21 @@ function Wireframe({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
-function WireframeFooter({
-	className,
-	children,
-	...props
-}: React.ComponentProps<"div">) {
-	return (
-		<div
-			className={cn("fixed inset-x-0 bottom-0 z-50", className)}
-			data-wf-footer
-			{...props}
-		>
-			{children}
-		</div>
-	);
-}
-
 function WireframeNav({
 	className,
 	children,
+	position = "top",
 	...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & {
+	position?: "top" | "bottom";
+}) {
 	return (
 		<div
-			className={cn("fixed inset-x-0 top-0 z-50", className)}
-			data-wf-nav
-			{...props}
+			className={cn("fixed inset-x-0 z-50", className)}
+			{...{
+				...props,
+				[`data-wf-${position}-nav`]: "",
+			}}
 		>
 			{children}
 		</div>
@@ -104,17 +97,17 @@ function WireframeResponsiveNav({
 	);
 }
 
-type WireframeCollapsableSidebarSide = "left" | "right";
+type WireframeCollapsableSidebarPosition = "left" | "right";
 
 function WireframeCollapsableSidebar({
 	className,
 	children,
 	collapsed = false,
-	side = "left",
+	position = "left",
 	...props
 }: React.ComponentProps<"div"> & {
 	collapsed?: boolean;
-	side?: WireframeCollapsableSidebarSide;
+	position?: WireframeCollapsableSidebarPosition;
 }) {
 	return (
 		<div
@@ -124,7 +117,7 @@ function WireframeCollapsableSidebar({
 			)}
 			{...{
 				...props,
-				[`data-wf-${side}-sidebar`]: `${collapsed ? "collapsed" : "expanded"}`,
+				[`data-wf-${position}-sidebar`]: `${collapsed ? "collapsed" : "expanded"}`,
 			}}
 		>
 			{children}
@@ -135,8 +128,7 @@ function WireframeCollapsableSidebar({
 export {
 	Wireframe,
 	WireframeNav,
-	WireframeFooter,
 	WireframeResponsiveNav,
 	WireframeCollapsableSidebar,
-	type WireframeCollapsableSidebarSide,
+	type WireframeCollapsableSidebarPosition,
 };

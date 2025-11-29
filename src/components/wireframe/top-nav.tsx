@@ -1,6 +1,6 @@
 import { WireframeNav } from "@/components/ui/wireframe";
 
-export function Nav() {
+export function TopNav() {
 	return (
 		<WireframeNav>
 			<div className="flex h-full w-full items-center justify-between bg-fuchsia-500/40">
