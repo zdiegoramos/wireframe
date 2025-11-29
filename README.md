@@ -1,29 +1,53 @@
-# Create T3 App
+# Wireframe
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+The `<Wireframe/>` component ensures that all elements are positioned correctly in the viewport, based on the components present on each route. If `/new` has a left sidebar and a top navbar, the content will be moved down and right, using margins, to prevent the positioned components from covering the content. 
 
-## What's next? How do I make an app with this?
+Instructions
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+1. Add the `<Wireframe/>` component to your layout. 
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+```tsx layout.tsx
+import { Wireframe } from "@/components/ui/wireframe";
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+export default function RootLayout({
+	children,
+}: Readonly<{ children: React.ReactNode }>) {
+	return (
+		<html lang="en">
+			<body>
+				<Wireframe>{children}</Wireframe>
+			</body>
+		</html>
+	);
+}
+```
 
-## Learn More
+2. Create a `<Wireframe/>` component. Current options `<WireframeNav/>`, `<WireframeResponsiveNav/>`,`<WireframeCollapsableSidebar/>`.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+```tsx /components/wireframe/top-nav.tsx
+import { WireframeNav } from "@/components/ui/wireframe";
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+export function TopNav() {
+	return (
+		<WireframeNav>
+			<div className="flex h-full w-full items-center justify-between">
+				<div>Logo</div>
+			</div>
+		</WireframeNav>
+	);
+}
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+3. Use your `<Wireframe/>` components.
 
-## How do I deploy this?
+```tsx page.tsx
+import { TopNav } from "@/components/wireframe/top-nav";
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+export default function HomePage() {
+	return (
+		<main>
+			<TopNav />
+		</main>
+	);
+}
+```
