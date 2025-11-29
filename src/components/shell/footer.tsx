@@ -1,7 +1,7 @@
 export function Footer() {
 	return (
 		<div
-			className="fixed inset-x-0 bottom-0 z-50 mb-[env(safe-area-inset-bottom)] flex justify-center border-t bg-red-700"
+			className="fixed inset-x-0 bottom-0 z-50 flex justify-center border-t bg-red-700"
 			data-footer
 		>
 			<div className="z-50 flex h-full w-full items-center justify-between">
