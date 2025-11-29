@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function LeftSideWithButton() {
+export function Sidebar() {
 	const [collapsed, setCollapsed] = useState(false);
 
 	function handleClick() {
@@ -12,7 +12,7 @@ export function LeftSideWithButton() {
 	return (
 		<div
 			className="fixed inset-x-0 top-0 bottom-0 z-50 overflow-scroll border-r bg-blue-400 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-			data-left-side={collapsed ? "collapsed" : "expanded"}
+			data-wf-sidebar={collapsed ? "collapsed" : "expanded"}
 		>
 			<div className="flex min-h-full w-full items-center justify-between">
 				<button onClick={handleClick} type="button">

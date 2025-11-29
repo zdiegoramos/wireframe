@@ -1,5 +1,5 @@
-import { Footer } from "@/components/shell/footer";
-import { Nav } from "@/components/shell/nav";
+import { Footer } from "@/components/wireframe/footer";
+import { Nav } from "@/components/wireframe/nav";
 
 export default function HomePage() {
 	return (

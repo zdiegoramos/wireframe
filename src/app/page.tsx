@@ -1,11 +1,11 @@
-import { LeftSideWithButton } from "@/components/shell/left-side-with-button";
-import { ResponsiveNav } from "@/components/shell/responsive-nav";
+import { ResponsiveNav } from "@/components/wireframe/responsive-nav";
+import { Sidebar } from "@/components/wireframe/sidebar";
 
 export default function HomePage() {
 	return (
 		<main className="bg-amber-500">
 			<ResponsiveNav />
-			<LeftSideWithButton />
+			<Sidebar />
 			<div className="h-[1000px] w-20 bg-green-900"></div>
 		</main>
 	);
