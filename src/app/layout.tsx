@@ -1,15 +1,7 @@
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 
-import type { Metadata, Viewport } from "next";
-
-export const viewport: Viewport = {
-	width: "device-width",
-	initialScale: 1,
-	maximumScale: 1,
-	viewportFit: "cover",
-	userScalable: false,
-};
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "App Shell",
