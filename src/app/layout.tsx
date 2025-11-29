@@ -26,23 +26,23 @@ export default function RootLayout({
 					// WILL BE POSITIONED OUTSIDE OF THIS AREA AS FIXED ELEMENTS
 					"has-data-nav:mt-16",
 					"has-data-footer:mb-16",
-					"has-data-left-side:ml-52",
-					"has-data-left-side-collapsed:ml-16",
+					"has-data-[left-side=expanded]:ml-52",
+					"has-data-[left-side=collapsed]:ml-16",
 
 					// PASS DOWN THE DIMENSIONS FOR THE NAV, FOOTER AND LEFT SIDE
 					// TOP NAVIGATION HEIGHT
 					"**:data-nav:h-16",
 					// ADD LEFT SIDE MARGIN TO TOP NAV IF LEFT SIDE EXISTS
-					"has-data-nav:has-data-left-side:**:data-nav:ml-52",
-					"has-data-nav:has-data-left-side-collapsed:**:data-nav:ml-16",
+					"has-data-nav:has-data-[left-side=expanded]:**:data-nav:ml-52",
+					"has-data-nav:has-data-[left-side=collapsed]:**:data-nav:ml-16",
 					// BOTTOM FOOTER HEIGHT
 					"**:data-footer:h-16",
 					// ADD LEFT SIDE MARGIN TO FOOTER IF LEFT SIDE EXISTS
-					"has-data-footer:has-data-left-side:**:data-footer:ml-52",
-					"has-data-footer:has-data-left-side-collapsed:**:data-footer:ml-16",
+					"has-data-footer:has-data-[left-side=expanded]:**:data-footer:ml-52",
+					"has-data-footer:has-data-[left-side=collapsed]:**:data-footer:ml-16",
 					// LEFT SIDE WIDTH
-					"**:data-left-side:w-52",
-					"**:data-left-side-collapsed:w-16",
+					"**:data-[left-side=expanded]:w-52",
+					"**:data-[left-side=collapsed]:w-16",
 				)}
 			>
 				{/* Make the safe areas top/bottom the same color as the background */}
