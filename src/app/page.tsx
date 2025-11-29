@@ -6,7 +6,7 @@ export default function HomePage() {
 		<main className="bg-amber-500">
 			<ResponsiveNav />
 			<Sidebar />
-			<div className="h-[1000px] w-20 bg-green-900"></div>
+			<div className="h-[1000px] w-20 bg-green-900" />
 		</main>
 	);
 }

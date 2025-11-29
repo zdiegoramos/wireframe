@@ -1,13 +1,12 @@
+import { WireframeNav } from "@/components/ui/wireframe";
+
 export function Nav() {
 	return (
-		<div
-			className="fixed inset-x-0 top-0 z-50 flex justify-center border-b bg-emerald-600/40"
-			data-wf-nav
-		>
-			<div className="flex h-full w-full items-center justify-between">
+		<WireframeNav>
+			<div className="flex h-full w-full items-center justify-between bg-fuchsia-500/40">
 				<div className="flex h-full items-center gap-2">Logo</div>
 				<nav className="flex h-full items-center gap-4">Link 1</nav>
 			</div>
-		</div>
+		</WireframeNav>
 	);
 }

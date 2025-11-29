@@ -7,7 +7,7 @@ export default function HomePage() {
 		<main className="bg-amber-500">
 			<Nav />
 			<SidebarStatic />
-			<div className="h-[1000px] w-20 bg-green-900"></div>
+			<div className="h-[1000px] w-20 bg-green-900" />
 			<Footer />
 		</main>
 	);
