@@ -8,7 +8,12 @@
 		var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-	--spacing-safe: 2vw;
+	--top-nav-height: calc(var(--spacing) * 16);
+	--bottom-nav-height: calc(var(--spacing) * 8);
+	--left-sidebar-width-collapsed: calc(var(--spacing) * 16);
+	--right-sidebar-width-collapsed: calc(var(--spacing) * 16);
+	--left-sidebar-width-expanded: calc(var(--spacing) * 52);
+	--right-sidebar-width-expanded: calc(var(--spacing) * 52);
 }
 
 @theme inline {

@@ -8,48 +8,48 @@ function Wireframe({ className, ...props }: React.ComponentProps<"div">) {
 				// OCCUPIES THE VISIBLE AREA. THE NAV, FOOTER AND SIDEBAR
 				// WILL BE POSITIONED OUTSIDE OF THIS AREA AS FIXED ELEMENTS
 				// ADD TOP AND BOTTOM MARGINS IF NAV EXIST
-				"has-data-wf-top-nav:mt-16",
-				"has-data-wf-bottom-nav:mb-16",
+				"has-data-wf-top-nav:mt-(--top-nav-height)",
+				"has-data-wf-bottom-nav:mb-(--bottom-nav-height)",
 				// ADD SIDEBAR MARGIN IF SIDEBAR EXISTS
-				"has-data-[wf-left-sidebar=expanded]:ml-52",
-				"has-data-[wf-right-sidebar=expanded]:mr-52",
-				"has-data-[wf-left-sidebar=collapsed]:ml-16",
-				"has-data-[wf-right-sidebar=collapsed]:mr-16",
+				"has-data-[wf-left-sidebar=expanded]:ml-(--left-sidebar-width-expanded)",
+				"has-data-[wf-right-sidebar=expanded]:mr-(--right-sidebar-width-expanded)",
+				"has-data-[wf-left-sidebar=collapsed]:ml-(--left-sidebar-width-collapsed)",
+				"has-data-[wf-right-sidebar=collapsed]:mr-(--right-sidebar-width-collapsed)",
 
 				// RESPONSIVE NAVBAR HEIGHT AND MARGINS
-				"**:data-wf-responsive-nav:h-16",
-				"has-data-wf-responsive-nav:mb-16",
-				"md:has-data-wf-responsive-nav:mt-16 md:has-data-wf-responsive-nav:mb-0",
+				"**:data-wf-responsive-nav:h-(--bottom-nav-height)",
+				"has-data-wf-responsive-nav:mb-(--bottom-nav-height)",
+				"md:has-data-wf-responsive-nav:mt-(--top-nav-height) md:has-data-wf-responsive-nav:mb-0 md:**:data-wf-responsive-nav:h-(--top-nav-height)",
 				// ADD SIDEBAR MARGIN TO RESPONSIVE NAV IF SIDEBAR EXISTS
-				"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-responsive-nav:ml-52",
-				"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-responsive-nav:mr-52",
-				"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-responsive-nav:ml-16",
-				"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-responsive-nav:mr-16",
+				"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-expanded)",
+				"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-expanded)",
+				"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-collapsed)",
+				"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-collapsed)",
 
 				// PASS DOWN THE DIMENSIONS FOR THE NAV, FOOTER AND SIDEBAR
 				// TOP NAVIGATION HEIGHT
-				"**:data-wf-top-nav:h-16",
+				"**:data-wf-top-nav:h-(--top-nav-height)",
 				"**:data-wf-top-nav:top-0",
 				// ADD SIDEBAR MARGIN TO TOP NAV IF SIDEBAR EXISTS
-				"has-data-wf-top-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-top-nav:ml-52",
-				"has-data-wf-top-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-top-nav:mr-52",
-				"has-data-wf-top-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-top-nav:ml-16",
-				"has-data-wf-top-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-top-nav:mr-16",
+				"has-data-wf-top-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-top-nav:ml-(--left-sidebar-width-expanded)",
+				"has-data-wf-top-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-top-nav:mr-(--right-sidebar-width-expanded)",
+				"has-data-wf-top-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-top-nav:ml-(--left-sidebar-width-collapsed)",
+				"has-data-wf-top-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-top-nav:mr-(--right-sidebar-width-collapsed)",
 				// BOTTOM FOOTER HEIGHT
-				"**:data-wf-bottom-nav:h-16",
+				"**:data-wf-bottom-nav:h-(--bottom-nav-height)",
 				"**:data-wf-bottom-nav:bottom-0",
 				// ADD SIDEBAR MARGIN TO FOOTER IF SIDEBAR EXISTS
-				"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-bottom-nav:ml-52",
-				"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-bottom-nav:mr-52",
-				"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-bottom-nav:ml-16",
-				"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-bottom-nav:mr-16",
+				"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-bottom-nav:ml-(--left-sidebar-width-expanded)",
+				"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-bottom-nav:mr-(--right-sidebar-width-expanded)",
+				"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-bottom-nav:ml-(--left-sidebar-width-collapsed)",
+				"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-bottom-nav:mr-(--right-sidebar-width-collapsed)",
 				// SIDEBAR WIDTH AND POSITIONING
 				"**:data-wf-left-sidebar:left-0",
 				"**:data-wf-right-sidebar:right-0",
-				"**:data-[wf-left-sidebar=expanded]:w-52",
-				"**:data-[wf-right-sidebar=expanded]:w-52",
-				"**:data-[wf-left-sidebar=collapsed]:w-16",
-				"**:data-[wf-right-sidebar=collapsed]:w-16",
+				"**:data-[wf-left-sidebar=expanded]:w-(--left-sidebar-width-expanded)",
+				"**:data-[wf-right-sidebar=expanded]:w-(--right-sidebar-width-expanded)",
+				"**:data-[wf-left-sidebar=collapsed]:w-(--left-sidebar-width-collapsed)",
+				"**:data-[wf-right-sidebar=collapsed]:w-(--right-sidebar-width-collapsed)",
 				className,
 			)}
 			{...props}
