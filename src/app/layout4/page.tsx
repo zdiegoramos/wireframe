@@ -1,12 +1,12 @@
 import {
-	DynamicCSSVariables,
+	DynamicWireframeVariables,
 	type WireframeCSSVariables,
 } from "@/components/dynamic-css-variables";
 import { ResponsiveNav } from "@/components/wireframe/responsive-nav";
 import { Sidebar } from "@/components/wireframe/sidebar";
 
 export default function Page() {
-	const wireframe = {
+	const wireframeConfig = {
 		topNavHeight: "100px",
 		bottomNavHeight: "50px",
 		leftSidebarWidthCollapsed: "80px",
@@ -16,12 +16,12 @@ export default function Page() {
 	} satisfies WireframeCSSVariables;
 
 	return (
-		<DynamicCSSVariables wireframe={wireframe}>
+		<DynamicWireframeVariables wireframeConfig={wireframeConfig}>
 			<main className="bg-amber-500">
 				<ResponsiveNav />
 				<Sidebar />
 				<div className="h-[1000px] w-20 bg-green-900" />
 			</main>
-		</DynamicCSSVariables>
+		</DynamicWireframeVariables>
 	);
 }

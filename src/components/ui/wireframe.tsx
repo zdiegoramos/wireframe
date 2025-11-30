@@ -77,6 +77,25 @@ function Wireframe({
 	);
 }
 
+function WireframeStickyNav({
+	className,
+	children,
+	...props
+}: React.ComponentProps<"div">) {
+	return (
+		<div
+			className={cn(
+				"sticky inset-x-0 top-0 z-50 h-(--sticky-nav-height) w-full",
+				className,
+			)}
+			data-wf-sticky-nav
+			{...props}
+		>
+			{children}
+		</div>
+	);
+}
+
 function WireframeNav({
 	className,
 	children,
@@ -148,6 +167,7 @@ function WireframeCollapsableSidebar({
 export {
 	Wireframe,
 	WireframeNav,
+	WireframeStickyNav,
 	WireframeResponsiveNav,
 	WireframeCollapsableSidebar,
 	type WireframeCollapsableSidebarPosition,

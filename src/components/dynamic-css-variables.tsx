@@ -21,9 +21,9 @@ function setProperties(data: [string, string | undefined][]) {
 	}
 }
 
-export function DynamicCSSVariables({
+export function DynamicWireframeVariables({
 	children,
-	wireframe: {
+	wireframeConfig: {
 		topNavHeight,
 		bottomNavHeight,
 		leftSidebarWidthCollapsed,
@@ -33,7 +33,7 @@ export function DynamicCSSVariables({
 	},
 }: {
 	children: React.ReactNode;
-	wireframe: WireframeCSSVariables;
+	wireframeConfig: WireframeCSSVariables;
 }) {
 	const [isReadyToRender, setIsReadyToRender] = useState(false);
 
