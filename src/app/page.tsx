@@ -1,7 +1,7 @@
 import { ResponsiveNav } from "@/components/wireframe/responsive-nav";
 import { Sidebar } from "@/components/wireframe/sidebar";
 
-export default function HomePage() {
+export default function Page() {
 	return (
 		<main className="bg-(image:--crossed-gradient) flex min-h-full flex-col items-center justify-center bg-stone-100">
 			<ResponsiveNav />

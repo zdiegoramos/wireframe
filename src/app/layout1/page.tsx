@@ -1,7 +1,7 @@
 import { BottomNav } from "@/components/wireframe/bottom-nav";
 import { Sidebar } from "@/components/wireframe/sidebar";
 
-export default function HomePage() {
+export default function Page() {
 	return (
 		<main className="bg-amber-500">
 			<Sidebar />

@@ -1,7 +1,7 @@
 import { Sidebar } from "@/components/wireframe/sidebar";
 import { StickyNav } from "@/components/wireframe/sticky-nav";
 
-export default function HomePage() {
+export default function Page() {
 	return (
 		<main className="bg-(image:--crossed-gradient) flex min-h-full flex-col items-center justify-center bg-stone-100">
 			<div className="h-20 w-full bg-red-300">HEADER</div>
