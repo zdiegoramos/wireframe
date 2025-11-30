@@ -22,7 +22,7 @@ export default function RootLayout({
 }
 ```
 
-2. Create a `<Wireframe/>` component. Current options `<WireframeNav/>`, `<WireframeResponsiveNav/>`,`<WireframeCollapsableSidebar/>`.
+2. Create a `<Wireframe/>` component. Current options `<WireframeNav/>`, `<WireframeStickyNav/>`, `<WireframeResponsiveNav/>`,`<WireframeCollapsableSidebar/>`.
 
 ```tsx /components/wireframe/top-nav.tsx
 import { WireframeNav } from "@/components/ui/wireframe";
