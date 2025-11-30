@@ -41,13 +41,14 @@ export function TopNav() {
 3. Use your `<Wireframe/>` components.
 
 ```tsx page.tsx
+import { WireframeContent } from "@/components/ui/wireframe";
 import { TopNav } from "@/components/wireframe/top-nav";
 
 export default function HomePage() {
 	return (
-		<main>
+		<WireframeContent>
 			<TopNav />
-		</main>
+		</WireframeContent>
 	);
 }
 ```

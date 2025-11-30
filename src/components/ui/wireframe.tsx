@@ -13,7 +13,7 @@ function Wireframe({
 				// WILL BE POSITIONED OUTSIDE OF THIS AREA AS FIXED ELEMENTS
 				// ADD TOP AND BOTTOM MARGINS IF NAV EXIST
 				"has-data-wf-top-nav:mt-(--top-nav-height)",
-				"has-data-wf-bottom-nav:mb-(--bottom-nav-height)",
+				"has-data-wf-bottom-nav:**:data-wf-content:pb-(--bottom-nav-height)",
 				// ADD SIDEBAR MARGIN IF SIDEBAR EXISTS
 				"has-data-[wf-left-sidebar=expanded]:ml-(--left-sidebar-width-expanded)",
 				"has-data-[wf-right-sidebar=expanded]:mr-(--right-sidebar-width-expanded)",
@@ -21,8 +21,10 @@ function Wireframe({
 				"has-data-[wf-right-sidebar=collapsed]:mr-(--right-sidebar-width-collapsed)",
 
 				// RESPONSIVE NAVBAR HEIGHT AND MARGINS
-				"has-data-wf-responsive-nav:mb-(--bottom-nav-height)",
-				"md:has-data-wf-responsive-nav:mt-(--top-nav-height) md:has-data-wf-responsive-nav:mb-0",
+				// MOBILE
+				"has-data-wf-responsive-nav:**:data-wf-content:pb-(--bottom-nav-height)",
+				// DESKTOP
+				"md:has-data-wf-responsive-nav:mt-(--top-nav-height) md:has-data-wf-responsive-nav:**:data-wf-content:pb-0",
 				// ADD SIDEBAR MARGIN TO RESPONSIVE NAV IF SIDEBAR EXISTS
 				"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-expanded)",
 				"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-expanded)",
@@ -62,6 +64,14 @@ function Wireframe({
 			>
 				{children}
 			</div>
+		</div>
+	);
+}
+
+function WireframeContent({ children, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div data-wf-content {...props}>
+			{children}
 		</div>
 	);
 }
@@ -175,6 +185,7 @@ function WireframeCollapsableSidebar({
 export {
 	Wireframe,
 	WireframeNav,
+	WireframeContent,
 	WireframeStickyNav,
 	WireframeResponsiveNav,
 	WireframeCollapsableSidebar,
