@@ -1,6 +1,10 @@
 import { cn } from "@/lib/utils";
 
-function Wireframe({ className, ...props }: React.ComponentProps<"div">) {
+function Wireframe({
+	className,
+	children,
+	...props
+}: React.ComponentProps<"div">) {
 	return (
 		<div
 			className={cn(
@@ -50,10 +54,26 @@ function Wireframe({ className, ...props }: React.ComponentProps<"div">) {
 				"**:data-[wf-right-sidebar=expanded]:w-(--right-sidebar-width-expanded)",
 				"**:data-[wf-left-sidebar=collapsed]:w-(--left-sidebar-width-collapsed)",
 				"**:data-[wf-right-sidebar=collapsed]:w-(--right-sidebar-width-collapsed)",
-				className,
+
+				// CONTENT
+				"has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height))]",
+				"has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height))]",
+				"has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height))]",
+				"has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height))] md:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height))]",
+				// HACK TO FIX CHILDREN HEIGHT 100% ISSUE
+				"relative",
 			)}
-			{...props}
-		/>
+		>
+			<div
+				// INNER WRAPPER TO COVER THE WHOLE AREA
+				// OTHERWISE, CHILDREN WON'T BE ABLE TO SET
+				// HEIGHT TO 100%
+				className={cn("absolute inset-0", className)}
+				{...props}
+			>
+				{children}
+			</div>
+		</div>
 	);
 }
 

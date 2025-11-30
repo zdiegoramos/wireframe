@@ -14,6 +14,24 @@
 	--right-sidebar-width-collapsed: calc(var(--spacing) * 16);
 	--left-sidebar-width-expanded: calc(var(--spacing) * 52);
 	--right-sidebar-width-expanded: calc(var(--spacing) * 52);
+
+	--crossed-gradient:
+		linear-gradient(
+			to top left,
+			transparent 0%,
+			transparent calc(50% - 0.8px),
+			black 50%,
+			transparent calc(50% + 0.8px),
+			transparent 100%
+		),
+		linear-gradient(
+			to top right,
+			transparent 0%,
+			transparent calc(50% - 0.8px),
+			black 50%,
+			transparent calc(50% + 0.8px),
+			transparent 100%
+		);
 }
 
 @theme inline {
