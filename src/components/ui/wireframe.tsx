@@ -12,8 +12,8 @@ function Wireframe({
 				// OCCUPIES THE VISIBLE AREA. THE NAV, FOOTER AND SIDEBAR
 				// WILL BE POSITIONED OUTSIDE OF THIS AREA AS FIXED ELEMENTS
 				// ADD TOP AND BOTTOM MARGINS IF NAV EXIST
-				"has-data-wf-top-nav:mt-(--top-nav-height)",
-				"has-data-wf-bottom-nav:**:data-wf-content:pb-(--bottom-nav-height)",
+				"has-data-wf-top-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-offset))]",
+				"has-data-wf-bottom-nav:**:data-wf-content:pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-offset))]",
 				// ADD SIDEBAR MARGIN IF SIDEBAR EXISTS
 				"has-data-[wf-left-sidebar=expanded]:ml-(--left-sidebar-width-expanded)",
 				"has-data-[wf-right-sidebar=expanded]:mr-(--right-sidebar-width-expanded)",
@@ -22,9 +22,9 @@ function Wireframe({
 
 				// RESPONSIVE NAVBAR HEIGHT AND MARGINS
 				// MOBILE
-				"has-data-wf-responsive-nav:**:data-wf-content:pb-(--bottom-nav-height)",
+				"has-data-wf-responsive-nav:**:data-wf-content:pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-offset))]",
 				// DESKTOP
-				"md:has-data-wf-responsive-nav:mt-(--top-nav-height) md:has-data-wf-responsive-nav:**:data-wf-content:pb-0",
+				"md:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-offset))] md:has-data-wf-responsive-nav:**:data-wf-content:pb-0",
 				// ADD SIDEBAR MARGIN TO RESPONSIVE NAV IF SIDEBAR EXISTS
 				"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-expanded)",
 				"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-expanded)",
@@ -47,10 +47,10 @@ function Wireframe({
 				// SIDEBAR WIDTH AND POSITIONING
 
 				// CONTENT
-				"has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height))]",
-				"has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height))]",
-				"has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height))]",
-				"has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height))] md:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height))]",
+				"has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-offset)-var(--bottom-nav-offset))]",
+				"has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-offset))]",
+				"has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-offset))]",
+				"has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-offset))] md:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-offset))]",
 				// HACK TO FIX CHILDREN HEIGHT 100% ISSUE
 				"relative",
 			)}
@@ -84,7 +84,7 @@ function WireframeStickyNav({
 	return (
 		<div
 			className={cn(
-				"sticky inset-x-0 top-0 z-50 h-(--sticky-nav-height) w-full",
+				"sticky inset-x-0 top-(--sticky-nav-offset) z-50 h-(--sticky-nav-height) w-full",
 				className,
 			)}
 			data-wf-sticky-nav
@@ -108,8 +108,8 @@ function WireframeNav({
 			className={cn(
 				"fixed inset-x-0 z-50",
 				position === "top"
-					? "top-0 h-(--top-nav-height)"
-					: "bottom-0 h-(--bottom-nav-height)",
+					? "top-(--top-nav-offset) h-(--top-nav-height)"
+					: "bottom-(--bottom-nav-offset) h-(--bottom-nav-height)",
 				className,
 			)}
 			{...{
@@ -130,7 +130,7 @@ function WireframeResponsiveNav({
 	return (
 		<div
 			className={cn(
-				"fixed inset-x-0 bottom-0 z-50 h-(--bottom-nav-height) md:top-0 md:bottom-auto md:h-(--top-nav-height)",
+				"fixed inset-x-0 bottom-(--bottom-nav-offset) z-50 h-(--bottom-nav-height) md:top-(--top-nav-offset) md:bottom-auto md:h-(--top-nav-height)",
 				className,
 			)}
 			data-wf-responsive-nav
