@@ -37,15 +37,29 @@ export function HomeWireframe({ children }: { children: React.ReactNode }) {
 			cssVariables={
 				{
 					"--sticky-nav-height": "calc(var(--spacing) * 12)",
-					"--sticky-nav-offset": "calc(var(--spacing) * 0)",
+					"--sticky-nav-top-offset": "calc(var(--spacing) * 0)",
 					"--top-nav-height": "calc(var(--spacing) * 16)",
-					"--top-nav-offset": "calc(var(--spacing) * 0)",
+					"--top-nav-top-offset": "calc(var(--spacing) * 0)",
+					"--top-nav-left-offset": "calc(var(--spacing) * 0)",
+					"--top-nav-right-offset": "calc(var(--spacing) * 0)",
+					"--top-nav-bottom-offset": "calc(var(--spacing) * 0)",
 					"--bottom-nav-height": "calc(var(--spacing) * 8)",
-					"--bottom-nav-offset": "calc(var(--spacing) * 0)",
+					"--bottom-nav-top-offset": "calc(var(--spacing) * 0)",
+					"--bottom-nav-left-offset": "calc(var(--spacing) * 0)",
+					"--bottom-nav-right-offset": "calc(var(--spacing) * 0)",
+					"--bottom-nav-bottom-offset": "calc(var(--spacing) * 0)",
 					"--left-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
 					"--right-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
 					"--left-sidebar-width-expanded": "calc(var(--spacing) * 52)",
 					"--right-sidebar-width-expanded": "calc(var(--spacing) * 52)",
+					"--right-sidebar-right-offset": "calc(var(--spacing) * 0)",
+					"--right-sidebar-top-offset": "calc(var(--spacing) * 0)",
+					"--right-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
+					"--right-sidebar-left-offset": "calc(var(--spacing) * 0)",
+					"--left-sidebar-left-offset": "calc(var(--spacing) * 0)",
+					"--left-sidebar-top-offset": "calc(var(--spacing) * 0)",
+					"--left-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
+					"--left-sidebar-right-offset": "calc(var(--spacing) * 0)",
 				} as React.CSSProperties
 			}
 		>
