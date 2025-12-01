@@ -7,7 +7,7 @@ const defaultConfig: ClassValue[] = [
 	// WILL BE POSITIONED OUTSIDE OF THIS AREA AS FIXED ELEMENTS
 	// ADD TOP AND BOTTOM MARGINS IF NAV EXIST
 	"has-data-wf-top-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))]",
-	"has-data-wf-bottom-nav:**:data-wf-content:pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
+	"has-data-wf-bottom-nav:**:data-wf-content:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
 	// ADD SIDEBAR MARGIN IF SIDEBAR EXISTS
 	"has-data-[wf-left-sidebar=expanded]:ml-[calc(var(--left-sidebar-width-expanded)+var(--left-sidebar-left-offset)+var(--left-sidebar-right-offset))]",
 	"has-data-[wf-right-sidebar=expanded]:mr-[calc(var(--right-sidebar-width-expanded)+var(--right-sidebar-right-offset)+var(--right-sidebar-left-offset))]",
@@ -16,17 +16,17 @@ const defaultConfig: ClassValue[] = [
 
 	// RESPONSIVE NAVBAR HEIGHT AND MARGINS
 	// MOBILE
-	"has-data-wf-responsive-nav:**:data-wf-content:pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
+	"has-data-wf-responsive-nav:**:data-wf-content:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
 	// DESKTOP
-	"min-wf-responsive-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))] min-wf-responsive-nav:has-data-wf-responsive-nav:**:data-wf-content:pb-0",
+	"min-wf-responsive-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))] min-wf-responsive-nav:has-data-wf-responsive-nav:**:data-wf-content:mb-0",
 	// SIDEBAR WIDTH AND POSITIONING
 
 	// CONTENT
-	"has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
-	"has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
-	"has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
-	"has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))] min-wf-responsive-nav:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
-	// HACK TO FIX CHILDREN HEIGHT 100% ISSUE
+	"has-data-wf-top-nav:has-data-wf-bottom-nav:**:data-wf-content:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
+	"has-data-wf-top-nav:**:data-wf-content:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
+	"has-data-wf-bottom-nav:**:data-wf-content:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
+	"has-data-wf-responsive-nav:**:data-wf-content:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))] min-wf-responsive-nav:has-data-wf-responsive-nav:**:data-wf-content:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
+
 	"relative",
 ];
 
@@ -181,23 +181,24 @@ function Wireframe({
 				className,
 			)}
 			style={{ ...((cssVariables as React.CSSProperties) ?? defaultVars) }}
+			{...props}
 		>
-			<div
-				// INNER WRAPPER TO COVER THE WHOLE AREA
-				// OTHERWISE, CHILDREN WON'T BE ABLE TO SET
-				// HEIGHT TO 100%
-				className={cn("absolute inset-0", className)}
-				{...props}
-			>
-				{children}
-			</div>
+			{children}
 		</div>
 	);
 }
 
-function WireframeContent({ children, ...props }: React.ComponentProps<"div">) {
+function WireframeContent({
+	children,
+	className,
+	...props
+}: React.ComponentProps<"div">) {
 	return (
-		<div data-wf-content {...props}>
+		<div
+			className={cn("absolute h-full", className)}
+			data-wf-content
+			{...props}
+		>
 			{children}
 		</div>
 	);
