@@ -1,6 +1,6 @@
 # Wireframe
 
-The `<Wireframe/>` component ensures that all elements are positioned correctly in the viewport, based on the components present on each route. If `/new` has a left sidebar and a top navbar, the content will be moved down and right, using margins, to prevent the positioned components from covering the content. 
+The `<Wireframe/>` component makes the content of your website adjust to positioned components like navbars and sidebars and let's you control the corners where sidebars and navbars intersect to decide which one occupies each corner.
 
 ## Installation
 
