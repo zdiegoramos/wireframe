@@ -1,3 +1,4 @@
+import { Wireframe } from "@/components/ui/wireframe";
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
@@ -13,7 +14,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html className="overscroll-none" lang="en" suppressHydrationWarning>
-			<body>{children}</body>
+			<body>
+				<Wireframe>{children}</Wireframe>
+			</body>
 		</html>
 	);
 }

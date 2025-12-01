@@ -1,12 +1,12 @@
 import { WireframeContent } from "@/components/ui/wireframe";
-import { BottomNav } from "@/components/wireframe/bottom-nav";
+import { ResponsiveNav } from "@/components/wireframe/responsive-nav";
 import { Sidebar } from "@/components/wireframe/sidebar";
 
 export default function Page() {
 	return (
 		<WireframeContent className="bg-(image:--crossed-gradient) flex min-h-full flex-col items-center justify-center">
+			<ResponsiveNav />
 			<Sidebar />
-			<BottomNav />
 			<div className="border-2 border-black bg-white px-2 font-bold">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic eos
 				ratione dolor illo quam aspernatur et exercitationem aut excepturi minus
