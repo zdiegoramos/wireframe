@@ -19,25 +19,6 @@ const defaultConfig: ClassValue[] = [
 	"has-data-wf-responsive-nav:**:data-wf-content:pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-offset))]",
 	// DESKTOP
 	"md:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-offset))] md:has-data-wf-responsive-nav:**:data-wf-content:pb-0",
-	// ADD SIDEBAR MARGIN TO RESPONSIVE NAV IF SIDEBAR EXISTS
-	"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-expanded)",
-	"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-expanded)",
-	"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-collapsed)",
-	"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-collapsed)",
-
-	// PASS DOWN THE DIMENSIONS FOR THE NAV, FOOTER AND SIDEBAR
-	// TOP NAVIGATION HEIGHT
-	// ADD SIDEBAR MARGIN TO TOP NAV IF SIDEBAR EXISTS
-	"has-data-wf-top-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-top-nav:ml-(--left-sidebar-width-expanded)",
-	"has-data-wf-top-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-top-nav:mr-(--right-sidebar-width-expanded)",
-	"has-data-wf-top-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-top-nav:ml-(--left-sidebar-width-collapsed)",
-	"has-data-wf-top-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-top-nav:mr-(--right-sidebar-width-collapsed)",
-	// BOTTOM FOOTER HEIGHT
-	// ADD SIDEBAR MARGIN TO FOOTER IF SIDEBAR EXISTS
-	"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-bottom-nav:ml-(--left-sidebar-width-expanded)",
-	"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-bottom-nav:mr-(--right-sidebar-width-expanded)",
-	"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-bottom-nav:ml-(--left-sidebar-width-collapsed)",
-	"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-bottom-nav:mr-(--right-sidebar-width-collapsed)",
 	// SIDEBAR WIDTH AND POSITIONING
 
 	// CONTENT
@@ -62,19 +43,99 @@ const defaultVars: React.CSSProperties = {
 	"--right-sidebar-width-expanded": "calc(var(--spacing) * 52)",
 } as React.CSSProperties;
 
+const responsiveNavCornersConfig = {
+	navbar: {
+		left: [
+			"has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mb-(--bottom-nav-height) md:has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mt-(--top-nav-height) md:has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mb-0",
+		],
+		right: [
+			"has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mb-(--bottom-nav-height) md:has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mt-(--top-nav-height) md:has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mb-0",
+		],
+	},
+	sidebar: {
+		left: [
+			"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-expanded) md:",
+			"has-data-wf-responsive-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-responsive-nav:ml-(--left-sidebar-width-collapsed)",
+		],
+		right: [
+			"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-expanded)",
+			"has-data-wf-responsive-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-responsive-nav:mr-(--right-sidebar-width-collapsed)",
+		],
+	},
+} as const;
+
+const cornersConfig = {
+	navbar: {
+		topLeft: [
+			"has-data-wf-top-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mt-(--top-nav-height)",
+			responsiveNavCornersConfig.navbar.left,
+		],
+		topRight: [
+			"has-data-wf-top-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mt-(--top-nav-height)",
+			responsiveNavCornersConfig.navbar.right,
+		],
+		bottomLeft: [
+			"has-data-wf-bottom-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mb-(--bottom-nav-height)",
+			responsiveNavCornersConfig.navbar.left,
+		],
+		bottomRight: [
+			"has-data-wf-bottom-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mb-(--bottom-nav-height)",
+			responsiveNavCornersConfig.navbar.right,
+		],
+	},
+	sidebar: {
+		topLeft: [
+			"has-data-wf-top-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-top-nav:ml-(--left-sidebar-width-expanded)",
+			"has-data-wf-top-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-top-nav:ml-(--left-sidebar-width-collapsed)",
+			responsiveNavCornersConfig.sidebar.left,
+		],
+		topRight: [
+			"has-data-wf-top-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-top-nav:mr-(--right-sidebar-width-expanded)",
+			"has-data-wf-top-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-top-nav:mr-(--right-sidebar-width-collapsed)",
+			responsiveNavCornersConfig.sidebar.right,
+		],
+		bottomLeft: [
+			"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=expanded]:**:data-wf-bottom-nav:ml-(--left-sidebar-width-expanded)",
+			"has-data-wf-bottom-nav:has-data-[wf-left-sidebar=collapsed]:**:data-wf-bottom-nav:ml-(--left-sidebar-width-collapsed)",
+			responsiveNavCornersConfig.sidebar.left,
+		],
+		bottomRight: [
+			"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=expanded]:**:data-wf-bottom-nav:mr-(--right-sidebar-width-expanded)",
+			"has-data-wf-bottom-nav:has-data-[wf-right-sidebar=collapsed]:**:data-wf-bottom-nav:mr-(--right-sidebar-width-collapsed)",
+			responsiveNavCornersConfig.sidebar.right,
+		],
+	},
+} as const;
+
+type WireframeCornerOptions = "navbar" | "sidebar";
+
 function Wireframe({
 	className,
 	children,
 	config,
 	vars,
+	corners,
 	...props
 }: React.ComponentProps<"div"> & {
 	config?: ClassValue[];
 	vars?: React.CSSProperties;
+	corners?: {
+		topLeft?: WireframeCornerOptions;
+		topRight?: WireframeCornerOptions;
+		bottomLeft?: WireframeCornerOptions;
+		bottomRight?: WireframeCornerOptions;
+	};
 }) {
 	return (
 		<div
-			className={cn(...(config ?? defaultConfig), className)}
+			className={cn(
+				...(config ?? defaultConfig),
+				cornersConfig[corners?.topLeft ?? "sidebar"].topLeft,
+				cornersConfig[corners?.topRight ?? "sidebar"].topRight,
+				cornersConfig[corners?.bottomLeft ?? "sidebar"].bottomLeft,
+				cornersConfig[corners?.bottomRight ?? "sidebar"].bottomRight,
+				className,
+			)}
 			style={{ ...(vars ?? defaultVars) }}
 		>
 			<div
