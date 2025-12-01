@@ -20,7 +20,7 @@ This controls when at which [breakpoint](https://tailwindcss.com/docs/responsive
 
 Set the desired dimensions and offsets for your sidebars and navbars by passing `cssVariables`.
 
-Configure how the corners behave by passing `navCorners` and/or `responsiveNavCorners` for non-responsive and responsive navbars, respectivelly. For non-responsive navs, you can choose to display either the `navbar` or `sidebar` for each corner. For responsive navs you can choose to display either the  `navbar` or `sidebar` on the left side or right side corners.
+Configure how the corners behave by passing `navCorners` and/or `responsiveNavCorners` for non-responsive and responsive navbars, respectively. For non-responsive navs, you can choose to display either the `navbar` or `sidebar` for each corner. For responsive navs you can choose to display either the  `navbar` or `sidebar` on the left side or right side corners.
 
 ```tsx
 import { Wireframe } from "@/components/ui/wireframe";
@@ -135,7 +135,7 @@ export default function Page() {
 
 ## Using multiple `<Wireframe/>`s
 
-The `<Wireframe/>` components are self contained so you can create multiple wireframes with differrent variables. You may define them using this naming convention `{name}-wireframe.tsx`. This is useful, if for example, you want your navbar to have an offset in the landing page, and also have another navbar in your dashboard page with no offset.
+The `<Wireframe/>` components are self contained so you can create multiple wireframes with different variables. You may define them using this naming convention `{name}-wireframe.tsx`. This is useful, if for example, you want your navbar to have an offset in the landing page, and also have another navbar in your dashboard page with no offset.
 
 Here's an example with a blog and a dashboard `<Wireframe/>`:
 
@@ -256,7 +256,7 @@ Warning: If you have multiple `<Wireframe/>`s, you can't return a `<Wireframe/>`
 
 ## Nested Wireframes
 
-Nested wireframes are not recommended, but if you need to have nested `<Wireframe/>`s duplicate `wireframe.tsx` and rename the namespace `wf`, for all `data-` attirbutes.
+Nested wireframes are not recommended, but if you need to have nested `<Wireframe/>`s duplicate `wireframe.tsx` and rename the namespace `wf`, for all `data-` attributes.
 
 Update all instances of the following:
 
