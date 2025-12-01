@@ -1,6 +1,6 @@
 # Wireframe
 
-The `<Wireframe/>` component makes the content of your website adjust to positioned components like navbars and sidebars and let's you control the corners where sidebars and navbars intersect to decide which one occupies each corner.
+The `<Wireframe/>` provides a standarized method to create positioned navbars and sidebars.
 
 ## Installation
 
@@ -20,7 +20,7 @@ This controls at which [breakpoint](https://tailwindcss.com/docs/responsive-desi
 
 Set the desired dimensions and offsets for your sidebars and navbars by passing `cssVariables`.
 
-Configure how the corners behave by passing `navCorners` and/or `responsiveNavCorners` for non-responsive and responsive navbars, respectively. For non-responsive navs, you can choose to display either the `navbar` or `sidebar` for each corner. For responsive navs you can choose to display either the  `navbar` or `sidebar` on the left side or right side corners.
+Configure how the corners behave by passing `navCorners` and/or `responsiveNavCorners` for non-responsive and responsive navbars, respectively. For non-responsive navs, you can choose to display either the `navbar` or `sidebar` for each corner. For responsive navs you can only choose between the left side or right side corners, not each corner.
 
 ```tsx
 import { Wireframe } from "@/components/ui/wireframe";
@@ -82,6 +82,125 @@ export function HomeWireframe({ children }: { children: React.ReactNode }) {
 
 Configuring your `<Wireframe/>` is optional. If you set a value it will overwrite the default value.
 
+## Components
+
+### `<Wireframe/>`
+
+The root wireframe component that provides the context for all the other wireframe components.
+
+#### Attributes
+
+```tsx
+	navCorners?: {
+		topLeft?: "navbar" | "sidebar";
+		topRight?: "navbar" | "sidebar";
+		bottomLeft?: "navbar" | "sidebar";
+		bottomRight?: "navbar" | "sidebar";
+	};
+	responsiveNavCorners?: {
+		left?: "navbar" | "sidebar";
+		right?: "navbar" | "sidebar";
+	};
+	cssVariables?: Record<WireframeCSSVariables, string>;
+```
+
+### `<WireframeContent/>`
+
+The content area that adjusts its size and position based on the presence of navbars and sidebars.
+
+### `<WireframeNav/>`
+
+A fixed navbar that can be placed at the top or at the bottom.
+
+#### Attributes
+
+```tsx
+position?: "top" | "bottom";
+```
+
+#### CSS variables
+
+```tsx
+	// TOP NAV
+	"--top-nav-height": "calc(var(--spacing) * 16)",
+	"--top-nav-left-offset": "calc(var(--spacing) * 0)",
+	"--top-nav-right-offset": "calc(var(--spacing) * 0)",
+	"--top-nav-top-offset": "calc(var(--spacing) * 0)",
+	"--top-nav-bottom-offset": "calc(var(--spacing) * 0)",
+
+	// BOTTOM NAV
+	"--bottom-nav-height": "calc(var(--spacing) * 8)",
+	"--bottom-nav-left-offset": "calc(var(--spacing) * 0)",
+	"--bottom-nav-right-offset": "calc(var(--spacing) * 0)",
+	"--bottom-nav-top-offset": "calc(var(--spacing) * 0)",
+	"--bottom-nav-bottom-offset": "calc(var(--spacing) * 0)",
+```
+
+### `<WireframeStickyNav/>`
+
+A sticky navbar that can only be placed at the top.
+
+#### CSS variables
+
+```tsx
+	// STICKY NAV
+	"--sticky-nav-height": "calc(var(--spacing) * 12)",
+	"--sticky-nav-top-offset": "calc(var(--spacing) * 0)",
+```
+
+### `<WireframeResponsiveNav/>`
+
+A responsive navbar that moves from the bottom to the top based on a breakpoint.
+
+#### CSS variables
+
+```tsx
+	// TOP NAV
+	"--top-nav-height": "calc(var(--spacing) * 16)",
+	"--top-nav-left-offset": "calc(var(--spacing) * 0)",
+	"--top-nav-right-offset": "calc(var(--spacing) * 0)",
+	"--top-nav-top-offset": "calc(var(--spacing) * 0)",
+	"--top-nav-bottom-offset": "calc(var(--spacing) * 0)",
+
+	// BOTTOM NAV
+	"--bottom-nav-height": "calc(var(--spacing) * 8)",
+	"--bottom-nav-left-offset": "calc(var(--spacing) * 0)",
+	"--bottom-nav-right-offset": "calc(var(--spacing) * 0)",
+	"--bottom-nav-top-offset": "calc(var(--spacing) * 0)",
+	"--bottom-nav-bottom-offset": "calc(var(--spacing) * 0)",
+```
+
+### `<WireframeCollapsableSidebar/>`
+
+A fixed sidebar that can be placed at the left or at the right. It has two states: collapsed and expanded.
+
+#### Attributes
+
+```tsx
+	collapsed?: boolean;
+	position?: "left" | "right";
+```
+
+#### CSS variables
+
+```tsx
+	// LEFT SIDEBAR
+	"--left-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
+	"--left-sidebar-width-expanded": "calc(var(--spacing) * 52)",
+	"--left-sidebar-left-offset": "calc(var(--spacing) * 0)",
+	"--left-sidebar-right-offset": "calc(var(--spacing) * 0)",
+	"--left-sidebar-top-offset": "calc(var(--spacing) * 0)",
+	"--left-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
+
+	// RIGHT SIDEBAR
+	"--right-sidebar-width-expanded": "calc(var(--spacing) * 52)",
+	"--right-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
+	"--right-sidebar-left-offset": "calc(var(--spacing) * 0)",
+	"--right-sidebar-right-offset": "calc(var(--spacing) * 0)",
+	"--right-sidebar-top-offset": "calc(var(--spacing) * 0)",
+	"--right-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
+```
+
 ## Usage
 
 1. Add the `<Wireframe/>` component to your layout. 
@@ -102,7 +221,7 @@ export default function RootLayout({
 }
 ```
 
-2. Create a `<Wireframe/>` component. Current options `<WireframeNav/>`, `<WireframeStickyNav/>`, `<WireframeResponsiveNav/>`,`<WireframeCollapsableSidebar/>`.
+2. Create a `<Wireframe/>` component.
 
 ```tsx /components/wireframe/top-nav.tsx
 import { WireframeNav } from "@/components/ui/wireframe";
