@@ -257,7 +257,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 ### Nested Wireframes
 
-Wireframe must not be nested because navbars and sidebars are positioned using `position: fixed` and `position: sticky`, which are relative to the viewport, not the parent element.
+`<Wireframe>`s must not be nested because navbars and sidebars are positioned using `position: fixed` and `position: sticky`, which are relative to the viewport, not the parent element.
 
 This means you only need one `<Wireframe>` per page. If you need different configurations for different pages, use multiple wireframe instances at the layout level as shown in the previous section.
 
