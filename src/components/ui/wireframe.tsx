@@ -20,7 +20,7 @@ const defaultConfig: ClassValue[] = [
 	// HAS RESPONSIVE NAV, AND VIEWPORT IS MOBILE, ADD BOTTOM MARGINS
 	"has-data-wf-responsive-nav:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
 	// HAS RESPONSIVE NAV, AND VIEWPORT IS DESKTOP, ADD TOP MARGINS
-	"min-wf-responsive-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))] min-wf-responsive-nav:has-data-wf-responsive-nav:mb-0",
+	"min-wf-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))] min-wf-nav:has-data-wf-responsive-nav:mb-0",
 
 	// HAS TOP AND BOTTOM NAV, SET WIREFRAME CONTENT MIN HEIGHT
 	"has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
@@ -31,7 +31,7 @@ const defaultConfig: ClassValue[] = [
 	// HAS RESPONSIVE NAV, AND VIEWPORT IS MOBILE, SET WIREFRAME CONTENT MIN HEIGHT
 	"has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
 	// HAS RESPONSIVE NAV, AND VIEWPORT IS DESKTOP, SET WIREFRAME CONTENT MIN HEIGHT
-	"min-wf-responsive-nav:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
+	"min-wf-nav:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
 
 	// MAKE THE WIREFRAME ROOT RELATIVE TO ALLOW CHILDREN TO BE ABSOLUTE POSITIONED IF NEEDED
 	"relative",
@@ -117,13 +117,13 @@ const responsiveNavCornersConfig = {
 			// HAS RESPONSIVE NAV AND LEFT SIDEBAR AND VIEWPORT IS MOBILE, ADD BOTTOM MARGIN TO LEFT SIDEBAR
 			"has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mb-(--bottom-nav-height)",
 			// HAS RESPONSIVE NAV AND LEFT SIDEBAR AND VIEWPORT IS DESKTOP, ADD TOP MARGIN TO LEFT SIDEBAR
-			"min-wf-responsive-nav:has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mt-(--top-nav-height) min-wf-responsive-nav:has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mb-0",
+			"min-wf-nav:has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mt-(--top-nav-height) min-wf-nav:has-data-wf-responsive-nav:has-data-wf-left-sidebar:**:data-wf-left-sidebar:mb-0",
 		],
 		right: [
 			// HAS RESPONSIVE NAV AND RIGHT SIDEBAR AND VIEWPORT IS MOBILE, ADD BOTTOM MARGIN TO RIGHT SIDEBAR
 			"has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mb-(--bottom-nav-height)",
 			// HAS RESPONSIVE NAV AND RIGHT SIDEBAR AND VIEWPORT IS DESKTOP, ADD TOP MARGIN TO RIGHT SIDEBAR
-			"min-wf-responsive-nav:has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mt-(--top-nav-height) min-wf-responsive-nav:has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mb-0",
+			"min-wf-nav:has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mt-(--top-nav-height) min-wf-nav:has-data-wf-responsive-nav:has-data-wf-right-sidebar:**:data-wf-right-sidebar:mb-0",
 		],
 	},
 	sidebar: {
@@ -266,7 +266,7 @@ function WireframeNav({
 		return (
 			<div
 				className={cn(
-					"fixed right-(--bottom-nav-right-offset) bottom-(--bottom-nav-bottom-offset) left-(--bottom-nav-left-offset) z-50 h-(--bottom-nav-height) min-wf-responsive-nav:top-(--top-nav-top-offset) min-wf-responsive-nav:right-(--top-nav-right-offset) min-wf-responsive-nav:bottom-auto min-wf-responsive-nav:left-(--top-nav-left-offset) min-wf-responsive-nav:h-(--top-nav-height)",
+					"fixed right-(--bottom-nav-right-offset) bottom-(--bottom-nav-bottom-offset) left-(--bottom-nav-left-offset) z-50 h-(--bottom-nav-height) min-wf-nav:top-(--top-nav-top-offset) min-wf-nav:right-(--top-nav-right-offset) min-wf-nav:bottom-auto min-wf-nav:left-(--top-nav-left-offset) min-wf-nav:h-(--top-nav-height)",
 					className,
 				)}
 				data-wf-responsive-nav

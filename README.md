@@ -22,7 +22,7 @@ Add the responsive nav breakpoint to your CSS (controls when responsive nav swit
 
 ```css
 @theme {
-	--breakpoint-wf-responsive-nav: 40rem; /* 640px */
+	--breakpoint-wf-nav: 40rem; /* 640px */
 }
 ```
 
