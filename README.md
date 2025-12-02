@@ -169,20 +169,19 @@ Root component that provides context. Wrap your app at the layout level.
 
 ### `<WireframeNav>`
 
-Fixed navbar component.
+Navbar component that can be fixed or responsive.
 
 **Props:**
-- `position`: `"top"` | `"bottom"` (default: `"top"`)
+- `position`: `"top"` | `"bottom"` | `"responsive"` (default: `"top"`)
+  - `"top"`: Fixed navbar at the top
+  - `"bottom"`: Fixed navbar at the bottom
+  - `"responsive"`: Positions at bottom on mobile and top on desktop (breakpoint-based)
 
 ### `<WireframeStickyNav>`
 
 Sticky navbar that scrolls with content until reaching the top.
 
-### `<WireframeResponsiveNav>`
-
-Navbar that positions at bottom on mobile and top on desktop (breakpoint-based).
-
-### `<WireframeCollapsableSidebar>`
+### `<WireframeSidebar>`
 
 Sidebar with collapsed/expanded states.
 

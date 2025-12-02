@@ -260,8 +260,23 @@ function WireframeNav({
 	position = "top",
 	...props
 }: React.ComponentProps<"div"> & {
-	position?: "top" | "bottom";
+	position?: "top" | "bottom" | "responsive";
 }) {
+	if (position === "responsive") {
+		return (
+			<div
+				className={cn(
+					"fixed right-(--bottom-nav-right-offset) bottom-(--bottom-nav-bottom-offset) left-(--bottom-nav-left-offset) z-50 h-(--bottom-nav-height) min-wf-responsive-nav:top-(--top-nav-top-offset) min-wf-responsive-nav:right-(--top-nav-right-offset) min-wf-responsive-nav:bottom-auto min-wf-responsive-nav:left-(--top-nav-left-offset) min-wf-responsive-nav:h-(--top-nav-height)",
+					className,
+				)}
+				data-wf-responsive-nav
+				{...props}
+			>
+				{children}
+			</div>
+		);
+	}
+
 	return (
 		<div
 			className={cn(
@@ -281,28 +296,9 @@ function WireframeNav({
 	);
 }
 
-function WireframeResponsiveNav({
-	className,
-	children,
-	...props
-}: React.ComponentProps<"div">) {
-	return (
-		<div
-			className={cn(
-				"fixed right-(--bottom-nav-right-offset) bottom-(--bottom-nav-bottom-offset) left-(--bottom-nav-left-offset) z-50 h-(--bottom-nav-height) min-wf-responsive-nav:top-(--top-nav-top-offset) min-wf-responsive-nav:right-(--top-nav-right-offset) min-wf-responsive-nav:bottom-auto min-wf-responsive-nav:left-(--top-nav-left-offset) min-wf-responsive-nav:h-(--top-nav-height)",
-				className,
-			)}
-			data-wf-responsive-nav
-			{...props}
-		>
-			{children}
-		</div>
-	);
-}
+type WireframeSidebarPosition = "left" | "right";
 
-type WireframeCollapsableSidebarPosition = "left" | "right";
-
-function WireframeCollapsableSidebar({
+function WireframeSidebar({
 	className,
 	children,
 	collapsed = false,
@@ -310,7 +306,7 @@ function WireframeCollapsableSidebar({
 	...props
 }: React.ComponentProps<"div"> & {
 	collapsed?: boolean;
-	position?: WireframeCollapsableSidebarPosition;
+	position?: WireframeSidebarPosition;
 }) {
 	return (
 		<div
@@ -344,8 +340,7 @@ function WireframeCollapsableSidebar({
 export {
 	Wireframe,
 	WireframeNav,
+	WireframeSidebar,
 	WireframeStickyNav,
-	WireframeResponsiveNav,
-	WireframeCollapsableSidebar,
-	type WireframeCollapsableSidebarPosition,
+	type WireframeSidebarPosition,
 };
