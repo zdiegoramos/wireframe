@@ -101,38 +101,38 @@ Customize dimensions and spacing by passing `cssVariables`. All values shown are
 <Wireframe
 	cssVariables={{
 		// STICKY NAV
-		"--sticky-nav-height": "calc(var(--spacing) * 12)",
-		"--sticky-nav-top-offset": "calc(var(--spacing) * 0)",
+		"--sticky-nav-height": 12,
+		"--sticky-nav-top-offset": 0,
 
 		// TOP NAV
-		"--top-nav-height": "calc(var(--spacing) * 16)",
-		"--top-nav-left-offset": "calc(var(--spacing) * 0)",
-		"--top-nav-right-offset": "calc(var(--spacing) * 0)",
-		"--top-nav-top-offset": "calc(var(--spacing) * 0)",
-		"--top-nav-bottom-offset": "calc(var(--spacing) * 0)",
+		"--top-nav-height": 16,
+		"--top-nav-left-offset": 0,
+		"--top-nav-right-offset": 0,
+		"--top-nav-top-offset": 0,
+		"--top-nav-bottom-offset": 0,
 
 		// BOTTOM NAV
-		"--bottom-nav-height": "calc(var(--spacing) * 8)",
-		"--bottom-nav-left-offset": "calc(var(--spacing) * 0)",
-		"--bottom-nav-right-offset": "calc(var(--spacing) * 0)",
-		"--bottom-nav-top-offset": "calc(var(--spacing) * 0)",
-		"--bottom-nav-bottom-offset": "calc(var(--spacing) * 0)",
+		"--bottom-nav-height": 8,
+		"--bottom-nav-left-offset": 0,
+		"--bottom-nav-right-offset": 0,
+		"--bottom-nav-top-offset": 0,
+		"--bottom-nav-bottom-offset": 0,
 
 		// LEFT SIDEBAR
-		"--left-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
-		"--left-sidebar-width-expanded": "calc(var(--spacing) * 52)",
-		"--left-sidebar-left-offset": "calc(var(--spacing) * 0)",
-		"--left-sidebar-right-offset": "calc(var(--spacing) * 0)",
-		"--left-sidebar-top-offset": "calc(var(--spacing) * 0)",
-		"--left-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
+		"--left-sidebar-width-collapsed": 16,
+		"--left-sidebar-width-expanded": 52,
+		"--left-sidebar-left-offset": 0,
+		"--left-sidebar-right-offset": 0,
+		"--left-sidebar-top-offset": 0,
+		"--left-sidebar-bottom-offset": 0,
 
 		// RIGHT SIDEBAR
-		"--right-sidebar-width-expanded": "calc(var(--spacing) * 52)",
-		"--right-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
-		"--right-sidebar-left-offset": "calc(var(--spacing) * 0)",
-		"--right-sidebar-right-offset": "calc(var(--spacing) * 0)",
-		"--right-sidebar-top-offset": "calc(var(--spacing) * 0)",
-		"--right-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
+		"--right-sidebar-width-expanded": 52,
+		"--right-sidebar-width-collapsed": 16,
+		"--right-sidebar-left-offset": 0,
+		"--right-sidebar-right-offset": 0,
+		"--right-sidebar-top-offset": 0,
+		"--right-sidebar-bottom-offset": 0,
 	}}
 >
 	{children}
@@ -207,7 +207,7 @@ export function BlogWireframe({ children }: { children: React.ReactNode }) {
 	return (
 		<Wireframe
 			cssVariables={{
-				"--top-nav-height": "calc(var(--spacing) * 20)",
+				"--top-nav-height": 20,
 				// Custom configuration for blog
 			}}
 		>
@@ -236,7 +236,7 @@ export function DashboardWireframe({ children }: { children: React.ReactNode }) 
 	return (
 		<Wireframe
 			cssVariables={{
-				"--left-sidebar-width-expanded": "calc(var(--spacing) * 64)",
+				"--left-sidebar-width-expanded": 64,
 				// Custom configuration for dashboard
 			}}
 		>
