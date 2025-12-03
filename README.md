@@ -139,6 +139,8 @@ Customize dimensions and spacing by passing `cssVariables`. All values shown are
 </Wireframe>
 ```
 
+Note: Numeric values are multiplied by [tailwindcss `--spacing`](https://tailwindcss.com/docs/theme#default-theme-variable-reference) variable (default `0.25rem`). If you need any other unit, use a string value (e.g., `"64px"`, `"10rem"`).
+
 ## Component Reference
 
 ### `<Wireframe>`
