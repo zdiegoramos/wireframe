@@ -209,8 +209,12 @@ export function BlogWireframe({ children }: { children: React.ReactNode }) {
 	return (
 		<Wireframe
 			cssVariables={{
-				"--top-nav-height": 20,
-				// Custom configuration for blog
+				// STICKY NAV
+				"--sticky-nav-height": 12,
+
+				// LEFT SIDEBAR
+				"--left-sidebar-width-collapsed": 16,
+				"--left-sidebar-width-expanded": 52,
 			}}
 		>
 			{children}
@@ -238,8 +242,15 @@ export function DashboardWireframe({ children }: { children: React.ReactNode }) 
 	return (
 		<Wireframe
 			cssVariables={{
-				"--left-sidebar-width-expanded": 64,
-				// Custom configuration for dashboard
+				// TOP NAV
+				"--top-nav-height": 16,
+
+				// BOTTOM NAV
+				"--bottom-nav-height": 8,
+
+				// LEFT SIDEBAR
+				"--left-sidebar-width-collapsed": 16,
+				"--left-sidebar-width-expanded": 52,
 			}}
 		>
 			{children}
