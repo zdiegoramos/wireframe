@@ -9,6 +9,7 @@ A component system for building fixed/sticky navigation layouts with automatic c
 - **Corner control**: Define which element (navbar or sidebar) occupies each corner
 - **CSS variable-driven**: Configure all dimensions and offsets through CSS variables
 - **Multiple instances**: Use different configurations for different sections (e.g., blog vs. dashboard)
+- **PWA support**: Automatic safe area handling for mobile devices with notches, rounded corners, and home indicators
 
 ## Installation
 
@@ -155,6 +156,7 @@ Root component that provides context. Wrap your app at the layout level.
 
 **Props:**
 - `config?` - Configuration object with the following optional properties:
+  - `safeAreas?` - Enable PWA safe area insets (default: `false`)
   - `corners?` - Control corner behavior for fixed and responsive navs
     ```tsx
     {
@@ -279,6 +281,126 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 ### Nested Wireframes
 
 `<Wireframe>`s must not be nested because navbars and sidebars are positioned using `position: fixed` and `position: sticky`, which are relative to the viewport, not the parent element. Thus, there must only be one `<Wireframe>` per page.
+
+## PWA Support
+
+The wireframe component includes comprehensive support for Progressive Web Apps (PWAs) with automatic handling of device safe areas.
+
+### What are Safe Areas?
+
+Safe areas are the regions of the screen that are guaranteed to be visible on all devices, accounting for:
+- **Notches and camera cutouts** (e.g., iPhone X and newer)
+- **Rounded corners** on modern smartphones
+- **Home indicators** (the bottom bar on gesture-based navigation)
+- **System UI elements** that may overlap your content
+
+Without safe area handling, your fixed navigation bars and sidebars could be partially obscured by these hardware features.
+
+### How It Works
+
+The wireframe component uses CSS `env(safe-area-inset-*)` variables to automatically add padding around your layout:
+
+1. **Automatic spacing adjustments**: All navbars and sidebars automatically include safe area insets in their positioning calculations
+2. **Optional colored overlays**: Enable `safeAreas` to add matching background overlays that fill the unsafe areas
+
+### Safe Area Insets
+
+All layout calculations automatically include safe area insets:
+
+```tsx
+// Navbars and sidebars automatically account for safe areas
+// For example, a top navbar is positioned at:
+top: calc(var(--top-nav-top-offset) + env(safe-area-inset-top))
+
+// Bottom navbar:
+bottom: calc(var(--bottom-nav-bottom-offset) + env(safe-area-inset-bottom))
+
+// Left sidebar:
+left: calc(var(--left-sidebar-left-offset) + env(safe-area-inset-left))
+
+// Right sidebar:
+right: calc(var(--right-sidebar-right-offset) + env(safe-area-inset-right))
+```
+
+This ensures your navigation elements are never obscured by device hardware.
+
+### Enabling Safe Area Overlays
+
+For a seamless edge-to-edge experience, enable safe area overlays that fill the unsafe regions with your background color:
+
+```tsx
+<Wireframe
+	config={{
+		safeAreas: true,
+	}}
+>
+	{children}
+</Wireframe>
+```
+
+This adds four fixed-position overlays (top, bottom, left, right) that:
+- Match your app's background color (uses `bg-background`)
+- Are `pointer-events-none` so they don't interfere with touch/click events
+- Have the highest z-index (`z-99999`) to ensure they're always on top
+- Fill only the unsafe areas using `env(safe-area-inset-*)`
+
+### PWA Meta Configuration
+
+To enable safe area support in your PWA, add the following to your `<head>`:
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }) {
+	return (
+		<html>
+			<head>
+				<meta 
+					name="viewport" 
+					content="width=device-width, initial-scale=1, viewport-fit=cover"
+				/>
+			</head>
+			<body>
+				<Wireframe config={{ safeAreas: true }}>
+					{children}
+				</Wireframe>
+			</body>
+		</html>
+	);
+}
+```
+
+The `viewport-fit=cover` directive is critical—it tells the browser to extend your content into the safe areas, allowing the wireframe component to handle them properly.
+
+### When to Use Safe Areas
+
+**Enable safe areas (`safeAreas: true`) when:**
+- Building a PWA or mobile-first app
+- Using edge-to-edge design with colored backgrounds
+- Your navbars/sidebars have distinct background colors
+- Targeting devices with notches or rounded corners
+
+**You can skip safe areas when:**
+- Building desktop-only applications
+- Using transparent navigation elements
+- Your app already has sufficient padding/margins
+
+### Manual Safe Area Components
+
+If you need more control, the wireframe also exports individual safe area components:
+
+```tsx
+import { 
+	SafeAreaInsetTop, 
+	SafeAreaInsetBottom, 
+	SafeAreaInsetLeft, 
+	SafeAreaInsetRight 
+} from "@/components/ui/wireframe";
+
+// Use them individually
+<SafeAreaInsetTop className="bg-blue-500" />
+```
+
+These components can be used outside the `<Wireframe>` context for custom layouts.
 
 ## Caveats
 
