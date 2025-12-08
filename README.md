@@ -2,9 +2,7 @@
 
 A component system for building fixed/sticky navigation layouts with automatic content spacing. Define your navbar and sidebar dimensions once, and the content area adjusts automatically.
 
-![Wireframe Preview](/public//og.png)
-
-[Playground](https://zdiego.com/wireframe/playground)
+[![Wireframe Preview](/public/og.png)](https://zdiego.com/wireframe/playground)
 
 ## What It Does
 
